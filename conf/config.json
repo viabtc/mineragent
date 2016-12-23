@@ -1,0 +1,26 @@
+{
+    "log": {
+        "path": "log/mineragent",
+        "flag": "fatal,error,warn,info,debug"
+    },
+    "svr": {
+        "bind": [
+            "tcp@0.0.0.0:3333",
+            "tcp@0.0.0.0:443",
+            "tcp@0.0.0.0:25"
+        ],
+        "max_pkg_size": 10240
+    },
+    "cli": "tcp@127.0.0.1:9001",
+    "stratum_host": "stratum.viabtc.com",
+    "stratum_port": 3333,
+    "worker_num": 4,
+    "diff_min": 16,
+    "diff_max": 1048576,
+    "diff_default": 4096,
+    "target_time": 4,
+    "retarget_time": 120,
+    "connect_timeout": 3600,
+    "broadcast_timeout": 55,
+    "client_max_idle_time": 86400 
+}
