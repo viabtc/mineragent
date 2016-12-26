@@ -5,7 +5,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/us
 cd `dirname $0`
 cd ..
 
-proc_num=`ps -ef | grep poolbench.exe | grep -v grep | wc -l`
+proc_num=`ps -ef | grep mineragent | grep -v grep | wc -l`
 if [ $proc_num -eq 0 ]
 then
     ./shell/restart.sh
