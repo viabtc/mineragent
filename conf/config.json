@@ -20,7 +20,7 @@
     "diff_default": 4096,
     "target_time": 4,
     "retarget_time": 120,
-    "connect_timeout": 3600,
+    "connect_timeout": 600,
     "broadcast_timeout": 55,
     "client_max_idle_time": 86400 
 }
