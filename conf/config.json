@@ -14,7 +14,7 @@
     "cli": "tcp@127.0.0.1:9001",
     "stratum_host": "stratum.viabtc.com",
     "stratum_port": 3333,
-    "worker_num": 4,
+    "worker_num": 8,
     "diff_min": 16,
     "diff_max": 1048576,
     "diff_default": 4096,
