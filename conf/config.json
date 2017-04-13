@@ -1,4 +1,8 @@
 {
+    "process": {
+        "file_limit": 1000000,
+        "core_limit": 1000000000
+    },
     "log": {
         "path": "log/mineragent",
         "flag": "fatal,error,warn,info,debug",
