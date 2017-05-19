@@ -26,6 +26,6 @@
     "target_time": 4,
     "retarget_time": 120,
     "connect_timeout": 600,
-    "broadcast_timeout": 55,
+    "broadcast_timeout": 125,
     "client_max_idle_time": 86400 
 }
