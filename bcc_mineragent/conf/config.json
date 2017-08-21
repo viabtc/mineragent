@@ -10,14 +10,14 @@
     },
     "svr": {
         "bind": [
-            "tcp@0.0.0.0:3333",
-            "tcp@0.0.0.0:443",
-            "tcp@0.0.0.0:25"
+            "tcp@0.0.0.0:8888",
+            "tcp@0.0.0.0:4443",
+            "tcp@0.0.0.0:2225"
         ],
         "max_pkg_size": 10240
     },
-    "cli": "tcp@127.0.0.1:9001",
-    "stratum_host": "stratum.viabtc.com",
+    "cli": "tcp@127.0.0.1:8001",
+    "stratum_host": "120.25.134.204",
     "stratum_port": 3333,
     "worker_num": 8,
     "diff_min": 16,
