@@ -1,7 +1,7 @@
 {
     "process": {
         "file_limit": 1000000,
-        "core_limit": 1000000000
+        "core_limit": 100000001200
     },
     "log": {
         "path": "log/mineragent",
