@@ -57,6 +57,13 @@ cd dash_mineragent
 ./shell/restart.h
 ```
 
+start eth
+
+```
+cd eth_mineragent
+./shell/restart.h
+```
+
 Then run command: `crontab -e` add the flowing line:
 
 ```
@@ -67,6 +74,7 @@ Then run command: `crontab -e` add the flowing line:
 */1 * * * * $path/dash_mineragent/shell/check_alive.sh >/dev/null 2>&1
 */1 * * * * $path/bitcoin_mineragent/shell/check_alive.sh >/dev/null 2>&1
 */1 * * * * $path/bsv_mineragent/shell/check_alive.sh >/dev/null 2>&1
+*/1 * * * * $path/eth_mineragent/shell/check_alive.sh >/dev/null 2>&1
 ```
 
 The `$path` is the path where you install the mineragent.

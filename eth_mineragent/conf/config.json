@@ -15,7 +15,7 @@
     },
     "cli": "tcp@127.0.0.1:9001",
     "stratum_host": "eth.viabtc.com",
-    "stratum_port": 9888,
+    "stratum_port": 3333,
     "worker_num": 4,
     "diff_default": 120000000,
     "connect_timeout": 600,
