@@ -1,0 +1,25 @@
+{
+    "process": {
+        "file_limit": 1000000,
+        "core_limit": 1000000000
+    },
+    "log": {
+        "path": "log/eth_mineragent",
+        "flag": "fatal,error,warn,info,debug"
+    },
+    "svr": {
+        "bind": [
+            "tcp@0.0.0.0:3333"
+        ],
+        "max_pkg_size": 102400
+    },
+    "cli": "tcp@127.0.0.1:9001",
+    "stratum_host": "eth.viabtc.com",
+    "stratum_port": 9888,
+    "worker_num": 4,
+    "diff_default": 120000000,
+    "connect_timeout": 600,
+    "broadcast_timeout": 55,
+    "client_max_idle_time": 86400 
+}
+
