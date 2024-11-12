@@ -3,6 +3,6 @@
 cd `dirname $0`
 cd ..
 
-killall -s SIGQUIT bcc_mineragent.exe
+killall -s SIGQUIT bch_mineragent.exe
 sleep 1
-./bin/bcc_mineragent.exe conf/config.json
+./bin/bch_mineragent.exe conf/config.json
