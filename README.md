@@ -22,13 +22,6 @@ cd bch_mineragent
 ./shell/restart.h
 ```
 
-start bitcoin
-
-```
-cd bitcoin_mineragent
-./shell/restart.h
-```
-
 start ltc
 
 ```
@@ -58,7 +51,6 @@ Then run command: `crontab -e` add the flowing line:
 */1 * * * * $path/ltc_mineragent/shell/check_alive.sh >/dev/null 2>&1
 */1 * * * * $path/zec_mineragent/shell/check_alive.sh >/dev/null 2>&1
 */1 * * * * $path/dash_mineragent/shell/check_alive.sh >/dev/null 2>&1
-*/1 * * * * $path/bitcoin_mineragent/shell/check_alive.sh >/dev/null 2>&1
 ```
 
 The `$path` is the path where you install the mineragent.
