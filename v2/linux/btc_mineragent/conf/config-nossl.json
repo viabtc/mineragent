@@ -1,0 +1,34 @@
+{
+    "process": {
+        "file_limit": 1000000,
+        "core_limit": 1000000000
+    },
+    "log": {
+        "path": "log/mineragent",
+        "flag": "fatal,error,warn,info,debug",
+        "num": 20
+    },
+    "svr": {
+        "bind": [
+            "tcp@0.0.0.0:3333",
+            "tcp@0.0.0.0:443",
+            "tcp@0.0.0.0:25"
+        ],
+        "max_pkg_size": 10240
+    },
+    "cli": "tcp@127.0.0.1:9001",
+    "stratum_server": {
+        "host": "btc.viabtc.io",
+        "port": 3333,
+        "is_ssl": false
+    },
+    "worker_num": 8,
+    "diff_min": 16,
+    "diff_max": 1048576,
+    "diff_default": 10240,
+    "target_time": 4,
+    "retarget_time": 120,
+    "connect_timeout": 300,
+    "broadcast_timeout": 125,
+    "client_max_idle_time": 86400 
+}
