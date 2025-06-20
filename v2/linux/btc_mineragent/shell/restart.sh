@@ -3,6 +3,6 @@
 cd `dirname $0`
 cd ..
 
-killall -s SIGQUIT btc_mineragent.exe
+sudo killall -s SIGQUIT btc_mineragent.exe
 sleep 1
-./bin/btc_mineragent.exe conf/config.json
+sudo ./bin/btc_mineragent.exe conf/config.json
