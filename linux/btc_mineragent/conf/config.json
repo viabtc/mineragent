@@ -17,11 +17,18 @@
         "max_pkg_size": 10240
     },
     "cli": "tcp@127.0.0.1:9001",
-    "stratum_server": {
-        "host": "btc-ssl.viabtc.io",
-        "port": 551,
-        "is_ssl": true
-    },
+    "stratum_server": [
+        {
+            "host": "btc-ssl.viabtc.io",
+            "port": 551,
+            "is_ssl": true
+        },
+        {
+            "host": "btc.viabtc.io",
+            "port": 3333,
+            "is_ssl": false
+        }
+    ],
     "worker_num": 8,
     "diff_min": 16,
     "diff_max": 1048576,
