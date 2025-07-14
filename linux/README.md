@@ -6,7 +6,7 @@ Ubuntu server 22.04 x86_64 and above
 
 ```
 git clone https://github.com/viabtc/mineragent.git
-cd mineragent/v2/linux
+cd mineragent/linux
 ```
 
 start btc   
