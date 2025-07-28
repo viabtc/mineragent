@@ -105,6 +105,20 @@ else
     exit 1
 fi
 
+# Check if listener and worker processes are running
+echo "Checking for ${MINER}_mineragent processes..."
+if ! pgrep -f "${MINER}_mineragent_listener" > /dev/null; then
+    echo -e "${RED}Error: ${MINER}_mineragent_listener process not found.${NC}"
+    exit 1
+fi
+
+if ! pgrep -f "${MINER}_mineragent_worker_" > /dev/null; then
+    echo -e "${RED}Error: ${MINER}_mineragent_worker_ process not found.${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}Successfully found ${MINER}_mineragent processes.${NC}"
+
 # Go back to the script's directory
 cd "$SCRIPT_DIR" || exit
 
