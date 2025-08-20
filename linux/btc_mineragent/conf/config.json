@@ -16,7 +16,7 @@
         ],
         "max_pkg_size": 10240
     },
-    "cli": "tcp@127.0.0.1:9001",
+    "cli": "tcp@127.0.0.1:8001",
     "stratum_server": [
         {
             "host": "btc-ssl.viabtc.io",
