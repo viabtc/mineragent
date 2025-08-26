@@ -7,8 +7,10 @@ English | [简体中文](./README.md) | [Русский](./README.ru.md)
 - Processor: 4 cores or more
 - Memory: 8 GB RAM or more
 - Storage: 60 GB or more
+
 ## Deployment Steps
 All steps below should be performed in the `Terminal` .
+
 ### 1. Configuration Environment 
 Before deploying MinerAgent, you need to install the required dependencies by running the following commands:
 ```bash
