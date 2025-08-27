@@ -50,20 +50,20 @@ Hashrate Monitor:
 - Hover over the chart to view detailed data on hashrate and connections
 
 ### 4. Exit Options
-When you click the `X` in the upper-right corner of the agent service interface, an exit
-confirmation dialog will appear.
+Click X in the upper-right corner of the agent service interface to open the Close Confirmation dialog.
 
 ![quit](./res/quit_en.png)
 
 Button Descriptions:
-- Config: Closes the current agent service window and returns to the configuration interface.
-- Tray: Minimizes the agent service program to the system tray in the lower-right corner of your desktop.
-- Continue: Cancels the action and returns to the agent service interface.
-- Exit: Quits the agent service program.
+- Config: Close the current agent service window and return to the configuration interface.
+- Tray: Minimize the agent service program to the system tray in the lower-right corner of your desktop.
+- Continue: Cancel the action and return to the agent service interface.
+- Close: Exit the agent service program.
 
 ### 5. Miner Connection
 Miners should connect to the agent via `IP:Port`.  
-IP is the `Server IP` where the agent is running. Port is the `Bind Port` configured in the configuration page.  
+IP is the `Server IP` where the agent is running. Port is the `Bind Port` configured in the configuration page.
+
 How to check `Server IP`:
 
 Press `Win + r`, type `cmd` or `powershell`, and press Enter to open the command prompt. Type `ipconfig | findstr "IPv4"` and press Enter. You’ll see the `Server IP`.
