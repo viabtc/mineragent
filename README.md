@@ -1,7 +1,4 @@
 # MinerAgent Deployment Guide for Linux (Ubuntu) With Startup feature
-
-English | [简体中文](./README.md) | [Русский](./README.ru.md)
-
 ## System Requirements
 - Operating System: Ubuntu Server 22.04 x86_64 or higher
 - Processor: 4 cores or more
