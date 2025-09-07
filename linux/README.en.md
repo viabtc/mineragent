@@ -50,7 +50,7 @@ To start the `BTC` agent and configure it with two pool server addresses:
 ```bash
 sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
 ```
-**Running Test: **
+**Running Test:** 
 ```bash
 telnet 127.0.0.1 3333
 ```
