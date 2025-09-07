@@ -50,6 +50,15 @@ To start the `BTC` agent and configure it with two pool server addresses:
 ```bash
 sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
 ```
+**Running Test: **
+```bash
+telnet 127.0.0.1 3333
+```
+if you can see :
+```
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+```
 ### 4. Connecting Miners
 Miners should connect to the agent service using `IP:Port`.
 IP is the `server IP` where the agent is running. The default ports for the BTC agent are `[3333 / 443 / 25]`. The default ports for the LTC agent are `[5555 / 446 / 26]`. You only need to use one of the listed ports.
