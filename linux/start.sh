@@ -125,10 +125,13 @@ cd "$SCRIPT_DIR" || exit
 # Setup cron job for the specified miner
 CHECK_ALIVE_SCRIPT="$AGENT_DIR/shell/check_alive.sh"
 if [ -f "$CHECK_ALIVE_SCRIPT" ]; then
-    CRON_JOB="*/1 * * * * $CHECK_ALIVE_SCRIPT >/dev/null 2>&1"
-    # Add the cron job if it doesn't exist
-    (crontab -l 2>/dev/null | grep -Fq "$CHECK_ALIVE_SCRIPT") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
-    echo -e "${GREEN}Cron job for ${MINER}_mineragent has been set up.${NC}"
+
+CRON_JOB="*/1 * * * * $CHECK_ALIVE_SCRIPT >/dev/null 2>&1"
+    # Add the cron job if it doesn't exist (for root user)
+    (sudo crontab -l -u root 2>/dev/null | grep -Fq "$CHECK_ALIVE_SCRIPT") || \
+    (sudo crontab -l -u root 2>/dev/null; echo "$CRON_JOB") | sudo crontab -u root -
+    echo -e "${GREEN}Cron job for ${MINER}_mineragent has been set up (root).${NC}"
+
 else
     echo -e "${RED}Warning: check_alive.sh not found for $MINER. Cron job not set.${NC}"
 fi
