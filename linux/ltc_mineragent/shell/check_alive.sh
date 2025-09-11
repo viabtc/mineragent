@@ -9,4 +9,13 @@ proc_num=`ps -ef | grep ltc_mineragent_ | grep -v grep | wc -l`
 if [ $proc_num -eq 0 ]
 then
     ./shell/restart.sh
+else
+    # check zombie process
+    zombie_num=`ps aux | grep '[l]tc_mineragent_' | awk '$8=="Z"' | wc -l`
+    if [ $zombie_num -gt 0 ]
+    then
+        ./shell/restart.sh
+    else
+        echo "ltc_mineragent is running"
+    fi
 fi
