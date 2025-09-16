@@ -13,19 +13,19 @@
 Перед началом развертывания MinerAgent необходимо установить зависимости, выполнив следующие команды:
 ```bash
 sudo apt update
-sudo apt install git
-sudo apt install jq
+sudo apt install -y jq unzip wget
 ```
 
 ### 2. Загрузка MinerAgent
 При необходимости перейдите в папку установки с помощью команды `cd`. В данном руководстве в качестве места установки используется папка по умолчанию (`cd ~`).   
 Выполните следующую команду для загрузки MinerAgent: 
 ```bash
-git clone https://github.com/viabtc/mineragent.git
+wget https://download.viabtc.top/viabtc_mineragent.zip
+unzip viabtc_mineragent.zip
 ```
 После загрузки перейдите в следующий каталог: 
 ```bash
-cd mineragent/linux
+cd mineragent-master/linux
 ```
 ### 3. Первоначальный запуск MinerAgent
 Для первого запуска можно использовать скрипт `start.sh`, который запускает MinerAgent и автоматически настраивает cron для периодической проверки работы агента.  

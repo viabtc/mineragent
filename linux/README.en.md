@@ -15,19 +15,19 @@ All steps below should be performed in the `Terminal` .
 Before deploying MinerAgent, you need to install the required dependencies by running the following commands:
 ```bash
 sudo apt update
-sudo apt install git
-sudo apt install jq
+sudo apt install -y jq unzip wget
 ```
 
 ### 2. Download MinerAgent
 If you want to install MinerAgent in a specific directory, use the `cd` command to navigate your desired location. This guide uses the default directory (`cd ~`) as the installation location.  
 Run the following command to download MinerAgent:
 ```bash
-git clone https://github.com/viabtc/mineragent.git
+wget https://download.viabtc.top/viabtc_mineragent.zip
+unzip viabtc_mineragent.zip
 ```
 After downloading, navigate to the following directory:  
 ```bash
-cd mineragent/linux
+cd mineragent-master/linux
 ```
 ### 3. Initial Startup of MinerAgent
 For first-time deployment, you can use the `start.sh` script in the current directory to start the MinerAgent service in one step, and automatically set up cron to periodically monitor whether the agent service is running properly.  

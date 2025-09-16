@@ -15,19 +15,19 @@
 在部署MinerAgent之前，需要安装相应的依赖库，执行以下命令：
 ```bash
 sudo apt update
-sudo apt install git
-sudo apt install jq
+sudo apt install -y jq unzip wget
 ```
 
 ### 2. 下载 MinerAgent
 如果你对MinerAgent安装位置有要求，可自行通过 `cd`  命令进入相应目录下载，此文档以默认目录（ `cd ~`  ）为安装目录。  
 执行下载命令：
 ```bash
-git clone https://github.com/viabtc/mineragent.git
+wget https://download.viabtc.top/viabtc_mineragent.zip
+unzip viabtc_mineragent.zip
 ```
 下载完成后，进入目录：  
 ```bash
-cd mineragent/linux
+cd mineragent-master/linux
 ```
 ### 3. 初次启动MinerAgent代理服务
 初次部署可以使用当前目录下的 `start.sh`  脚本一键执行启动MinerAgent代理服务，并自动设置cron定时监控代理服务是否正常运行。  
