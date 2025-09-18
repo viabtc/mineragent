@@ -34,9 +34,9 @@ cd mineragent-master/linux
 **基本用法：**  
 要启动特定币种的代理（例如 `btc`  或者 `ltc` ）：  
 ```bash
-sudo ./start.sh btc
+./start.sh btc
 或
-sudo ./start.sh ltc
+./start.sh ltc
 ```
 **高级用法（可配置矿池服务器）：**  
 最多可以配置3个矿池服务器地址。  
@@ -48,7 +48,18 @@ sudo ./start.sh ltc
 **例：**  
 要启动 `BTC` 代理并使用两个矿池服务器地址对其进行配置：
 ```bash
-sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+```
+**代理服务测试**
+BTC 代理服务默认端口为 `3333` ，LTC 代理服务默认端口为 `5555` 。  
+执行测试命令：
+```bash
+telnet 127.0.0.1 3333
+```
+执行后，看到类似下面的输出，即为启动成功:
+```
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
 ```
 ### 4. 矿机连接
 矿机需要通过 `IP:端口` 连接代理服务。

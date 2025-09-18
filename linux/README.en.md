@@ -34,9 +34,9 @@ For first-time deployment, you can use the `start.sh` script in the current dire
 **Basic Usage:**  
 To start the agent for a specific coin (e.g., `BTC` or `LTC`):  
 ```bash
-sudo ./start.sh btc
+./start.sh btc
 or
-sudo ./start.sh ltc
+./start.sh ltc
 ```
 **Advanced Usage (configurable mining pool server)**  
 You can configure up to three mining pool server addresses.  
@@ -48,7 +48,7 @@ The format of mining pool server address: `host:port:[ssl|nossl]`
 **Example:**  
 To start the `BTC` agent and configure it with two pool server addresses:
 ```bash
-sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
 ```
 ### 4. Connecting Miners
 Miners should connect to the agent service using `IP:Port`.
