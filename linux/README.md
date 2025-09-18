@@ -15,28 +15,28 @@
 在部署MinerAgent之前，需要安装相应的依赖库，执行以下命令：
 ```bash
 sudo apt update
-sudo apt install git
-sudo apt install jq
+sudo apt install -y jq unzip wget
 ```
 
 ### 2. 下载 MinerAgent
 如果你对MinerAgent安装位置有要求，可自行通过 `cd`  命令进入相应目录下载，此文档以默认目录（ `cd ~`  ）为安装目录。  
 执行下载命令：
 ```bash
-git clone https://github.com/viabtc/mineragent.git
+wget https://download.viabtc.top/viabtc_mineragent.zip
+unzip viabtc_mineragent.zip
 ```
 下载完成后，进入目录：  
 ```bash
-cd mineragent/linux
+cd mineragent-master/linux
 ```
 ### 3. 初次启动MinerAgent代理服务
 初次部署可以使用当前目录下的 `start.sh`  脚本一键执行启动MinerAgent代理服务，并自动设置cron定时监控代理服务是否正常运行。  
 **基本用法：**  
 要启动特定币种的代理（例如 `btc`  或者 `ltc` ）：  
 ```bash
-sudo ./start.sh btc
+./start.sh btc
 或
-sudo ./start.sh ltc
+./start.sh ltc
 ```
 **高级用法（可配置矿池服务器）：**  
 最多可以配置3个矿池服务器地址。  
@@ -48,7 +48,18 @@ sudo ./start.sh ltc
 **例：**  
 要启动 `BTC` 代理并使用两个矿池服务器地址对其进行配置：
 ```bash
-sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+```
+**代理服务测试**
+BTC 代理服务默认端口为 `3333` ，LTC 代理服务默认端口为 `5555` 。  
+执行测试命令：
+```bash
+telnet 127.0.0.1 3333
+```
+执行后，看到类似下面的输出，即为启动成功:
+```
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
 ```
 ### 4. 矿机连接
 矿机需要通过 `IP:端口` 连接代理服务。

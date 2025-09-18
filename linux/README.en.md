@@ -15,28 +15,28 @@ All steps below should be performed in the `Terminal` .
 Before deploying MinerAgent, you need to install the required dependencies by running the following commands:
 ```bash
 sudo apt update
-sudo apt install git
-sudo apt install jq
+sudo apt install -y jq unzip wget
 ```
 
 ### 2. Download MinerAgent
 If you want to install MinerAgent in a specific directory, use the `cd` command to navigate your desired location. This guide uses the default directory (`cd ~`) as the installation location.  
 Run the following command to download MinerAgent:
 ```bash
-git clone https://github.com/viabtc/mineragent.git
+wget https://download.viabtc.top/viabtc_mineragent.zip
+unzip viabtc_mineragent.zip
 ```
 After downloading, navigate to the following directory:  
 ```bash
-cd mineragent/linux
+cd mineragent-master/linux
 ```
 ### 3. Initial Startup of MinerAgent
 For first-time deployment, you can use the `start.sh` script in the current directory to start the MinerAgent service in one step, and automatically set up cron to periodically monitor whether the agent service is running properly.  
 **Basic Usage:**  
 To start the agent for a specific coin (e.g., `BTC` or `LTC`):  
 ```bash
-sudo ./start.sh btc
+./start.sh btc
 or
-sudo ./start.sh ltc
+./start.sh ltc
 ```
 **Advanced Usage (configurable mining pool server)**  
 You can configure up to three mining pool server addresses.  
@@ -48,7 +48,7 @@ The format of mining pool server address: `host:port:[ssl|nossl]`
 **Example:**  
 To start the `BTC` agent and configure it with two pool server addresses:
 ```bash
-sudo ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
+./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
 ```
 ### 4. Connecting Miners
 Miners should connect to the agent service using `IP:Port`.

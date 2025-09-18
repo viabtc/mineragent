@@ -1,4 +1,4 @@
-# MinerAgent 使用指南
+# MinerAgent
 
 ## 有必要搭建代理服务器吗？
 
