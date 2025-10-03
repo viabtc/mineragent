@@ -89,6 +89,11 @@ fi
 echo "Changing directory to $AGENT_DIR"
 cd "$AGENT_DIR" || exit
 
+# Grant execute permissions to shell scripts
+if [ -d "./shell" ]; then
+    chmod +x ./shell/*.sh 2>/dev/null
+fi
+
 RESTART_SCRIPT=""
 if [ -f "./shell/restart.sh" ]; then
     RESTART_SCRIPT="./shell/restart.sh"
