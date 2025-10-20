@@ -29,6 +29,7 @@ After downloading, navigate to the following directory:
 ```bash
 cd mineragent-master/linux
 ```
+
 ### 3. Initial Startup of MinerAgent
 For first-time deployment, you can use the `start.sh` script in the current directory to start the MinerAgent service in one step, and automatically set up cron to periodically monitor whether the agent service is running properly.  
 **Basic Usage:**  
@@ -50,6 +51,20 @@ To start the `BTC` agent and configure it with two pool server addresses:
 ```bash
 ./start.sh btc btc.viabtc.com:3333:nossl btc-ssl.viabtc.io:551:ssl
 ```
+
+**Agent Service Test:**  
+The default agent port is 3333 for BTC and 5555 for LTC.
+Run the test command:
+```bash
+telnet 127.0.0.1 3333
+```
+
+After execution, if you see output similar to the following, it means the startup is successful:
+```bash
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+```
+
 ### 4. Connecting Miners
 Miners should connect to the agent service using `IP:Port`.
 IP is the `server IP` where the agent is running. The default ports for the BTC agent are `[3333 / 443 / 25]`. The default ports for the LTC agent are `[5555 / 446 / 26]`. You only need to use one of the listed ports.
