@@ -89,6 +89,50 @@ fi
 echo "Changing directory to $AGENT_DIR"
 cd "$AGENT_DIR" || exit
 
+# Detect CPU architecture and create symlink
+BIN_DIR="$AGENT_DIR/bin"
+ARCH=$(uname -m)
+EXE_NAME="${MINER}_mineragent.exe"
+SYMLINK_PATH="$BIN_DIR/$EXE_NAME"
+
+if [ ! -d "$BIN_DIR" ]; then
+    echo -e "${RED}Error: bin directory not found at $BIN_DIR${NC}"
+    exit 1
+fi
+
+# Determine architecture-specific executable name
+if [ "$ARCH" == "x86_64" ]; then
+    ARCH_EXE="${MINER}_mineragent-x86_64.exe"
+elif [ "$ARCH" == "aarch64" ] || [ "$ARCH" == "arm64" ]; then
+    ARCH_EXE="${MINER}_mineragent-aarch64.exe"
+else
+    echo -e "${RED}Error: Unsupported CPU architecture: $ARCH${NC}"
+    echo -e "${RED}Supported architectures: x86_64, aarch64/arm64${NC}"
+    exit 1
+fi
+
+ARCH_EXE_PATH="$BIN_DIR/$ARCH_EXE"
+
+# Check if architecture-specific executable exists
+if [ ! -f "$ARCH_EXE_PATH" ]; then
+    echo -e "${RED}Error: Executable not found: $ARCH_EXE_PATH${NC}"
+    exit 1
+fi
+
+# Remove existing symlink if it exists
+if [ -L "$SYMLINK_PATH" ] || [ -f "$SYMLINK_PATH" ]; then
+    rm -f "$SYMLINK_PATH"
+fi
+
+# Create symlink
+ln -s "$ARCH_EXE" "$SYMLINK_PATH"
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}Created symlink: $SYMLINK_PATH -> $ARCH_EXE${NC}"
+else
+    echo -e "${RED}Error: Failed to create symlink $SYMLINK_PATH${NC}"
+    exit 1
+fi
+
 # Grant execute permissions to shell scripts
 if [ -d "./shell" ]; then
     chmod +x ./shell/*.sh 2>/dev/null
