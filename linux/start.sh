@@ -8,6 +8,30 @@ NC='\033[0m' # No Color
 # Get the absolute path of the script's directory
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
+# Check and install required dependencies
+echo "Checking required dependencies..."
+REQUIRED_PACKAGES=("jq" "unzip" "wget")
+MISSING_PACKAGES=()
+
+for package in "${REQUIRED_PACKAGES[@]}"; do
+    if ! command -v "$package" &> /dev/null; then
+        MISSING_PACKAGES+=("$package")
+    fi
+done
+
+if [ ${#MISSING_PACKAGES[@]} -gt 0 ]; then
+    echo -e "${GREEN}Installing missing dependencies: ${MISSING_PACKAGES[*]}...${NC}"
+    if sudo apt update && sudo apt install -y "${MISSING_PACKAGES[@]}"; then
+        echo -e "${GREEN}Dependencies installed successfully.${NC}"
+    else
+        echo -e "${RED}Error: Failed to install dependencies. Please install manually:${NC}"
+        echo -e "${RED}sudo apt update && sudo apt install -y ${MISSING_PACKAGES[*]}${NC}"
+        exit 1
+    fi
+else
+    echo -e "${GREEN}All required dependencies are already installed.${NC}"
+fi
+
 # Check if a coin argument is provided
 if [ -z "$1" ]; then
     echo -e "${RED}Error: Missing argument. Please specify a coin.${NC}"
@@ -35,13 +59,8 @@ fi
 
 # Parse stratum server arguments if any are provided
 if [ "$#" -gt 0 ]; then
-    if ! command -v jq &> /dev/null; then
-        echo -e "${RED}jq could not be found. Please install it first.${NC}"
-        echo -e "${RED}On Ubuntu: sudo apt-get install jq${NC}"
-        exit 1
-    else
-        servers_json=""
-        for server_arg in "$@"; do
+    servers_json=""
+    for server_arg in "$@"; do
             IFS=':' read -r host port ssl_str <<< "$server_arg"
 
             # Basic format check
@@ -70,20 +89,19 @@ if [ "$#" -gt 0 ]; then
                 exit 1
             fi
 
-            server_json_part=$(jq -n --arg host "$host" --argjson port "$port" --argjson ssl "$is_ssl" \
-              '{host: $host, port: $port, is_ssl: $ssl}')
-            
-            if [ -z "$servers_json" ]; then
-                servers_json="$server_json_part"
-            else
-                servers_json="$servers_json, $server_json_part"
-            fi
-        done
+        server_json_part=$(jq -n --arg host "$host" --argjson port "$port" --argjson ssl "$is_ssl" \
+          '{host: $host, port: $port, is_ssl: $ssl}')
+        
+        if [ -z "$servers_json" ]; then
+            servers_json="$server_json_part"
+        else
+            servers_json="$servers_json, $server_json_part"
+        fi
+    done
 
-        echo -e "${GREEN}Updating $CONFIG_FILE with new stratum servers...${NC}"
-        jq --argjson new_servers "[$servers_json]" '.stratum_server = $new_servers' "$CONFIG_FILE" > "${CONFIG_FILE}.tmp" && mv "${CONFIG_FILE}.tmp" "$CONFIG_FILE"
-        echo -e "${GREEN}Config file updated.${NC}"
-    fi
+    echo -e "${GREEN}Updating $CONFIG_FILE with new stratum servers...${NC}"
+    jq --argjson new_servers "[$servers_json]" '.stratum_server = $new_servers' "$CONFIG_FILE" > "${CONFIG_FILE}.tmp" && mv "${CONFIG_FILE}.tmp" "$CONFIG_FILE"
+    echo -e "${GREEN}Config file updated.${NC}"
 fi
 
 echo "Changing directory to $AGENT_DIR"
@@ -98,6 +116,15 @@ SYMLINK_PATH="$BIN_DIR/$EXE_NAME"
 if [ ! -d "$BIN_DIR" ]; then
     echo -e "${RED}Error: bin directory not found at $BIN_DIR${NC}"
     exit 1
+fi
+
+# Grant execute permissions to files in bin directory
+echo -e "${GREEN}Setting execute permissions for files in bin directory...${NC}"
+chmod +x "$BIN_DIR"/* 2>/dev/null
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}Execute permissions set successfully.${NC}"
+else
+    echo -e "${YELLOW}Warning: Some files in bin directory may not have execute permissions.${NC}"
 fi
 
 # Determine architecture-specific executable name
