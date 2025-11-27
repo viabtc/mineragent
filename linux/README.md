@@ -29,6 +29,7 @@ unzip viabtc_mineragent.zip
 ```bash
 cd mineragent-master/linux
 ```
+
 ### 3. 初次启动MinerAgent代理服务
 初次部署可以使用当前目录下的 `start.sh`  脚本一键执行启动MinerAgent代理服务，并自动设置cron定时监控代理服务是否正常运行。  
 **基本用法：**  
