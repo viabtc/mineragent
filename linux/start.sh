@@ -35,16 +35,16 @@ fi
 # Check if a coin argument is provided
 if [ -z "$1" ]; then
     echo -e "${RED}Error: Missing argument. Please specify a coin.${NC}"
-    echo -e "${RED}Usage: $0 {btc|ltc} [host:port:ssl|nossl] ...${NC}"
+    echo -e "${RED}Usage: $0 {btc|ltc|zec} [host:port:ssl|nossl] ...${NC}"
     exit 1
 fi
 
 MINER=$1
 shift
 
-if [ "$MINER" != "btc" ] && [ "$MINER" != "ltc" ]; then
-    echo -e "${RED}Error: Invalid coin specified. Please use 'btc' or 'ltc'.${NC}"
-    echo -e "${RED}Usage: $0 {btc|ltc} [host:port:ssl|nossl] ...${NC}"
+if [ "$MINER" != "btc" ] && [ "$MINER" != "ltc" ] && [ "$MINER" != "zec" ]; then
+    echo -e "${RED}Error: Invalid coin specified. Please use 'btc' or 'ltc' or 'zec'.${NC}"
+    echo -e "${RED}Usage: $0 {btc|ltc|zec} [host:port:ssl|nossl] ...${NC}"
     exit 1
 fi
 
@@ -168,8 +168,6 @@ fi
 RESTART_SCRIPT=""
 if [ -f "./shell/restart.sh" ]; then
     RESTART_SCRIPT="./shell/restart.sh"
-elif [ -f "./shell/restart.h" ]; then # for ltc case
-    RESTART_SCRIPT="./shell/restart.h"
 fi
 
 if [ -n "$RESTART_SCRIPT" ]; then
