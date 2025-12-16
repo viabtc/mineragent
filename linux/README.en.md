@@ -33,11 +33,9 @@ cd mineragent-master/linux
 ### 3. Initial Startup of MinerAgent
 For first-time deployment, you can use the `start.sh` script in the current directory to start the MinerAgent service in one step, and automatically set up cron to periodically monitor whether the agent service is running properly.  
 **Basic Usage:**  
-To start the agent for a specific coin (e.g., `BTC` or `LTC`):  
+To start the agent for a specific coin (e.g., `BTC`):  
 ```bash
 ./start.sh btc
-or
-./start.sh ltc
 ```
 **Advanced Usage (configurable mining pool server)**  
 You can configure up to three mining pool server addresses.  
@@ -53,7 +51,7 @@ To start the `BTC` agent and configure it with two pool server addresses:
 ```
 
 **Agent Service Test:**  
-The default agent port is 3333 for BTC and 5555 for LTC.
+The default agent port is 3333 for BTC.
 Run the test command:
 ```bash
 telnet 127.0.0.1 3333
@@ -67,7 +65,7 @@ Connected to 127.0.0.1.
 
 ### 4. Connecting Miners
 Miners should connect to the agent service using `IP:Port`.
-IP is the `server IP` where the agent is running. The default ports for the BTC agent are `[3333 / 443 / 25]`. The default ports for the LTC agent are `[5555 / 446 / 26]`. You only need to use one of the listed ports.
+IP is the `server IP` where the agent is running. The default ports for the BTC agent are `[3333 / 443 / 25]`. The default ports for the LTC agent are `[5555 / 446 / 26]`. The default ports for the ZEC agent are `[5557 / 447 / 27]`. You only need to use one of the listed ports.
 How to check `server IP`:  
 Run:
 ```bash
